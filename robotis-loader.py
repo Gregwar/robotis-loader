@@ -2,8 +2,13 @@
 
 import serial, sys, os, time
 
-print('~~ Robotis programmer ~~')
+print('~~ Robotis loader ~~')
 print('')
+
+# Reading command line
+if len(sys.argv) != 3:
+    exit('! Usage: robotis-loader.py <serial-port> <binary>')
+pgm, port, binary = sys.argv
 
 # Helper to prints a progress bar
 def progressBar(percent, precision=65):
@@ -14,11 +19,6 @@ def progressBar(percent, precision=65):
         else: sys.stdout.write(' ')
     sys.stdout.write(' ] ')
     sys.stdout.flush()
-
-# Reading command line
-if len(sys.argv) != 3:
-    exit('! Usage: robotis-loader.py <serial-port> <binary>')
-pgm, port, binary = sys.argv
 
 # Opening the firmware file
 try:
